@@ -8,4 +8,6 @@ And it tries to intelligently convert to string value that are not easy to read 
 
 Well, it also gives acces to private methods, if you want to test them, too.
 
-You know, it allows you to evidentiate the tests by using `assert`, `start`, and `stop`.
+You know, it allows you to evidentiate the tests by using `assert`, `start`, and `stop`. For those cases where a little bit of test is better than no tests.
+
+And it has no dependencies. In less than 100 LOC.
