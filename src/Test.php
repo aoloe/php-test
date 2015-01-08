@@ -41,6 +41,10 @@ class Test {
         return $this->assert_identical($description, $actual, true);
     }
 
+    public function assert_false($description, $actual) {
+        return $this->assert_identical($description, $actual, false);
+    }
+
     /**
      * allows to test private methods
      * @param args this methos allows a list of parameters that will be used as arguments for the mehod
