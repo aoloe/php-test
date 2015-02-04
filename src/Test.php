@@ -57,6 +57,18 @@ class Test {
         return $method->invokeArgs($obj, $args);
     }
 
+    /**
+     * allows to read the value of private parameters
+     * @param args this methos allows a list of parameters that will be used as arguments for the mehod
+     */
+    public function access_property($obj, $name) {
+        $args = array_slice(func_get_args(), 2);
+        $class = new \ReflectionClass($obj);
+        $property = $class->getProperty($name);
+        $property->setAccessible(true);
+        return $property->getValue($obj);
+    }
+
     private function my_assert_handler ($file, $line, $code, $desc = null)
     {
         echo "<p class=\"test\"><span class=\"fail\">\"$desc\" failed</span> at $file:$line:$code</p>\n";
