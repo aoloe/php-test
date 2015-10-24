@@ -71,7 +71,13 @@ class Test {
 
     private function my_assert_handler ($file, $line, $code, $desc = null)
     {
-        echo "<p class=\"test\"><span class=\"fail\">\"$desc\" failed</span> at $file:$line:$code</p>\n";
+        $bt = debug_backtrace();
+        // show the calling line number from the first file that is not Test.php
+        while (!array_key_exists('file', $bt[0]) || ($bt[0]['file'] == __FILE__)) {
+            $item = array_shift($bt);
+        }
+        $bt = reset($bt);
+        echo "<p class=\"test\">[".$bt['line']."] <span class=\"fail\">\"$desc\" failed</span> at $file:$line:$code</p>\n";
         echo "\n";
     }
 
