@@ -54,7 +54,7 @@ class Test {
         $class = new \ReflectionClass($obj);
         $method = $class->getMethod($name);
         $method->setAccessible(true);
-        return $method->invokeArgs($obj, $args);
+        return $method->invokeArgs(is_string($obj) ? null: $obj, $args);
     }
 
     /**
